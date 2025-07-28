@@ -1,9 +1,7 @@
-Flask
-scikit-learn
-joblib
 flask
-joblib
+gunicorn
 scikit-learn
+joblib
 pandas
 numpy
 requests
