@@ -1,9 +1,0 @@
-Flask
-scikit-learn
-joblib
-flask
-joblib
-scikit-learn
-pandas
-numpy
-requests
