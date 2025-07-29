@@ -8,7 +8,7 @@ try:
     home_model = joblib.load("home_model.pkl")
     away_model = joblib.load("away_model.pkl")
 except Exception as e:
-    print("Ошибка при загрузке моделей:", e)
+    print(f"Ошибка при загрузке моделей: {e}")
     home_model = None
     away_model = None
 
@@ -20,12 +20,13 @@ def index():
 def predict():
     data = request.get_json()
     try:
-        home_xg = float(data["home_xg"])
-        away_xg = float(data["away_xg"])
-        home_form = float(data["home_form"])
-        away_form = float(data["away_form"])
-
-        features = np.array([[home_xg, away_xg, home_form, away_form]])
+        features = np.array([
+            [float(data["home_xg"]), 
+             float(data["away_xg"]),
+             float(data["home_form"]),
+             float(data["away_form"])]
+        ])
+        
         home_pred = home_model.predict(features)[0]
         away_pred = away_model.predict(features)[0]
         total_goals = home_pred + away_pred
